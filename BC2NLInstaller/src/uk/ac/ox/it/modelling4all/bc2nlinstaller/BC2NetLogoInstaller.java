@@ -68,10 +68,10 @@ public class BC2NetLogoInstaller {
 		bc2NetLogoJarFileExists = new File(bc2NetLogoJarFile).exists();
 	    }
 	}
-	String jreFolderFile = bc2NetLogoFolder + "/jre";
-	boolean jreFolderExists = new File(jreFolderFile).exists();
+//	String jreFolderFile = bc2NetLogoFolder + "/jre";
+//	boolean jreFolderExists = new File(jreFolderFile).exists();
 	boolean previouslyInstalled = true;
-	if (!bc2NetLogoJarFileExists || !jreFolderExists) {
+//	if (!bc2NetLogoJarFileExists || !jreFolderExists) {
 //	    previouslyInstalled = jreFolderExists;
 //	    if (previouslyInstalled) {
 //		installUpdates();
@@ -89,15 +89,15 @@ public class BC2NetLogoInstaller {
 //		bc2NetLogoJarFile = bc2NetLogoFolder + "/support.jar";
 //		bc2NetLogoJarFileExists = new File(bc2NetLogoJarFile).exists();
 //		if (!bc2NetLogoJarFileExists) {
-		    JOptionPane.showMessageDialog(frame, INSTALLATION_PROBLEM_PLEASE_REPORT_THIS_TO_INFO_MODELLING4ALL_ORG + 
-			                                 " Could not find " + new File(bc2NetLogoJarFile).getAbsolutePath() + " and/or " + 
-			                                                      new File(jreFolderFile).getAbsolutePath());
-		    System.exit(0);
+//		    JOptionPane.showMessageDialog(frame, INSTALLATION_PROBLEM_PLEASE_REPORT_THIS_TO_INFO_MODELLING4ALL_ORG + 
+//			                                 " Could not find " + new File(bc2NetLogoJarFile).getAbsolutePath() + " and/or " + 
+//			                                                      new File(jreFolderFile).getAbsolutePath());
+//		    System.exit(0);
 //		}
 //	    }
 //	} else {
 //	    installUpdates();
-	}
+//	}
 	// https to avoid ISP JavaScript injection (e.g. by T-Mobile) and https://m.modelling4all.org doesn't work
 	String defaultServer = "https://m4a-gae.appspot.com";
 	String server = Settings.getPreference("server", defaultServer);
@@ -242,15 +242,16 @@ public class BC2NetLogoInstaller {
 	String libPath = bc2NetLogoFolder.replaceAll("\\\\", "/") + "/lib";
 	String specialLibPath = null;
 	String java;
-	String osName = System.getProperty("os.name");
-	if (osName.toLowerCase().contains("windows")) {
-	    java = bc2NetLogoFolder + "/jre/bin/java.exe";
-	    specialLibPath = libPath + "/Windows";
-	} else {
+//	String osName = System.getProperty("os.name");
+//	if (osName.toLowerCase().contains("windows")) {
+//	    java = bc2NetLogoFolder + "/jre/bin/java.exe";
+//	    specialLibPath = libPath + "/Windows";
+//	} else {
 	    java = "java"; // trust the environment variables are set up correctly
 	    // TODO: experiment with the following being null
 	    specialLibPath = libPath;
-	}
+//	}
+//	    java = "C:/Program Files/Java/jre1.8.0_66/bin/java.exe";
 	ProcessBuilder processBuilder;
 	String libParameter = specialLibPath == null ? "" : "-Djava.library.path=" + specialLibPath;
 	// tried adding "-classpath", libPath,  to the following
