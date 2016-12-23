@@ -216,3 +216,5 @@ pip-log.txt
 
 BC2NLInstaller/bin/uk/ac/ox/it/modelling4all/bc2nlinstaller/*.class
 *.class
+*.class
+BC2NLInstaller/bin/uk/ac/ox/it/modelling4all/bc2nlinstaller/Settings.class
