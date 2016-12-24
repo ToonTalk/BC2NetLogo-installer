@@ -20,7 +20,8 @@ import javax.swing.ProgressMonitor;
 import javax.swing.UIManager;
 
 /**
- * This class launches BC2NetLogo
+ * This class used to launch BC2NetLogo but security settings on the MacOS caused problems
+ *  so this just updates settings used by BC2NetLogo
  * 
  * @author Ken Kahn
  *
@@ -36,17 +37,17 @@ public class BC2NetLogoInstaller {
     private static String bc2NetLogoFolder;
 
     public static void main(String[] args) {
-	try {
-	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	} catch (Exception e) {
-	    Utilities.reportException(e);
-	}
-	frame = new JFrame("Start BC2NetLogo");
-	Settings.initialise();
-	bc2NetLogoFolder = Settings.getPreference("BC2NetLogoDirectory", ".");
-	// while debugging
-//	bc2NetLogoFolder = "C:\\bin\\BC2NetLogo";
-	installAndLaunch();
+    	try {
+    		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    	} catch (Exception e) {
+    		Utilities.reportException(e);
+    	}
+    	frame = new JFrame("Start BC2NetLogo");
+    	Settings.initialise();
+    	bc2NetLogoFolder = Settings.getPreference("BC2NetLogoDirectory", ".");
+    	// while debugging
+    	//	bc2NetLogoFolder = "C:\\bin\\BC2NetLogo";
+    	installAndLaunch();
     }
 
     protected static void installAndLaunch() {
@@ -120,11 +121,11 @@ public class BC2NetLogoInstaller {
     			panel.add(serverPanel);
     			TextOption folderPanel = new TextOption(bc2NetLogoFolder,       "Folder:           ", " Installation location     ", 0);
     			panel.add(folderPanel);
-    			final JCheckBox checkBox3D = new JCheckBox("Tick if you want to use the 3D version of NetLogo.");
-    			checkBox3D.setFont(new Font("Arial", Font.BOLD, 14));
-    			checkBox3D.setSelected(Settings.getPreferenceBoolean("3D", false));
-    			checkBox3D.setAlignmentX(Component.LEFT_ALIGNMENT);
-    			panel.add(checkBox3D);
+//    			final JCheckBox checkBox3D = new JCheckBox("Tick if you want to use the 3D version of NetLogo.");
+//    			checkBox3D.setFont(new Font("Arial", Font.BOLD, 14));
+//    			checkBox3D.setSelected(Settings.getPreferenceBoolean("3D", false));
+//    			checkBox3D.setAlignmentX(Component.LEFT_ALIGNMENT);
+//    			panel.add(checkBox3D);
     			final JCheckBox checkBoxTranslate = new JCheckBox("Tick if you want to use a language other than English.");
     			checkBoxTranslate.setFont(new Font("Arial", Font.BOLD, 14));
     			checkBoxTranslate.setSelected(Settings.getPreferenceBoolean("translate", false));
@@ -132,9 +133,9 @@ public class BC2NetLogoInstaller {
     			panel.add(checkBoxTranslate);
     			int result = JOptionPane.showConfirmDialog(null, panel, "Change your Behaviour Composer launch settings", JOptionPane.OK_CANCEL_OPTION);
     			if (result == JOptionPane.OK_OPTION) {
-    				if (checkBox3D.isSelected() != Settings.getPreferenceBoolean("3D", false)) {
-    					Settings.putPreferenceBoolean("3D", checkBox3D.isSelected());
-    				}
+//    				if (checkBox3D.isSelected() != Settings.getPreferenceBoolean("3D", false)) {
+//    					Settings.putPreferenceBoolean("3D", checkBox3D.isSelected());
+//    				}
     				if (checkBoxTranslate.isSelected() != Settings.getPreferenceBoolean("translate", false)) {
     					Settings.putPreferenceBoolean("translate", checkBoxTranslate.isSelected());
     				}
