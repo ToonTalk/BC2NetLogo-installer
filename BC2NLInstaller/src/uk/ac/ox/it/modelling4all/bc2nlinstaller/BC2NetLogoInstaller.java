@@ -28,9 +28,6 @@ import javax.swing.UIManager;
  */
 public class BC2NetLogoInstaller {
 
-//    private static final Boolean epidemicGameMaker = false; // generate two versions of the JAR with each value
-    public static final String INSTALLATION_PROBLEM_PLEASE_REPORT_THIS_TO_INFO_MODELLING4ALL_ORG = 
-	    "Installation is missing required files. Sorry. Please report this to info@modelling4all.org";
     public static final String ERROR_PLEASE_REPORT_THIS_TO_INFO_MODELLING4ALL_ORG =
 	    "Error encountered. Sorry. Please report this to info@modelling4all.org";
     public static JFrame frame = null;
@@ -90,18 +87,6 @@ public class BC2NetLogoInstaller {
     			JOptionPane.showMessageDialog(frame, "Attempting to update Java preferences caused the following exception: " + stringWriter.toString());
     		};
     	}
-//    	if (!epidemicGameMaker) {
-    		// EGM just launches without all this
-//    		Object[] options = {"Yes, launch now", "No, show advanced settings"};
-//    		int answer = JOptionPane.showOptionDialog(frame,
-//    				"Ready to launch the Behaviour Composer to NetLogo application?",
-//    				"BC2NetLogo launcher",
-//    				JOptionPane.YES_NO_OPTION,
-//    				JOptionPane.QUESTION_MESSAGE,
-//    				null,
-//    				options,
-//    				options[0]);
-//    		if (answer == JOptionPane.NO_OPTION) {
     			String sessionGuid = Settings.getPreference("sessionGuid", "new");
     			String userGuid = Settings.getPreference("userGuid", "new");
     			String parameters = Settings.getPreference("parameters", "");
@@ -121,11 +106,6 @@ public class BC2NetLogoInstaller {
     			panel.add(serverPanel);
     			TextOption folderPanel = new TextOption(bc2NetLogoFolder,       "Folder:           ", " Installation location     ", 0);
     			panel.add(folderPanel);
-//    			final JCheckBox checkBox3D = new JCheckBox("Tick if you want to use the 3D version of NetLogo.");
-//    			checkBox3D.setFont(new Font("Arial", Font.BOLD, 14));
-//    			checkBox3D.setSelected(Settings.getPreferenceBoolean("3D", false));
-//    			checkBox3D.setAlignmentX(Component.LEFT_ALIGNMENT);
-//    			panel.add(checkBox3D);
     			final JCheckBox checkBoxTranslate = new JCheckBox("Tick if you want to use a language other than English.");
     			checkBoxTranslate.setFont(new Font("Arial", Font.BOLD, 14));
     			checkBoxTranslate.setSelected(Settings.getPreferenceBoolean("translate", false));
@@ -133,9 +113,6 @@ public class BC2NetLogoInstaller {
     			panel.add(checkBoxTranslate);
     			int result = JOptionPane.showConfirmDialog(null, panel, "Change your Behaviour Composer launch settings", JOptionPane.OK_CANCEL_OPTION);
     			if (result == JOptionPane.OK_OPTION) {
-//    				if (checkBox3D.isSelected() != Settings.getPreferenceBoolean("3D", false)) {
-//    					Settings.putPreferenceBoolean("3D", checkBox3D.isSelected());
-//    				}
     				if (checkBoxTranslate.isSelected() != Settings.getPreferenceBoolean("translate", false)) {
     					Settings.putPreferenceBoolean("translate", checkBoxTranslate.isSelected());
     				}
@@ -176,37 +153,12 @@ public class BC2NetLogoInstaller {
     				if (!newFolder.equals(bc2NetLogoFolder)) {
     					Settings.putPreference("BC2NetLogoDirectory", newFolder);
     					bc2NetLogoFolder = newFolder;
-    					installAndLaunch();
     					return;
     				}
     			} else {
     				System.exit(0); // cancelled
     			}
-//    		} else if (answer != JOptionPane.YES_OPTION) {
-//    			System.exit(0); // cancelled
-//    		}
-//    	}
     	Settings.writePreferences();
-//    	boolean threeD = Settings.getPreferenceBoolean("3D", false);
-//    	String libPath = bc2NetLogoFolder.replaceAll("\\\\", "/") + "/lib";
-//    	String specialLibPath = libPath;
-//    	String java = "java"; // trust the environment variables are set up correctly
-//    	ProcessBuilder processBuilder;
-    	//	String libParameter = specialLibPath == null ? "" : "-Djava.library.path=" + specialLibPath;
-    	// tried adding "-classpath", libPath,  to the following
-    	// but no effect -- idea was to avoid having the lib in the BC2NetLogo folder
-//    	String epidemicGameFlag = epidemicGameMaker ? "1" : "0";
-//    	if (threeD && !epidemicGameMaker) {
-//    		processBuilder = new ProcessBuilder(java, "-Dorg.nlogo.is3d=true", "-Xfuture", "-Xmx1024m", "-Dfile.encoding=UTF-8", "-XX:MaxPermSize=128m", "-jar", "support.jar"); // "-Djava.ext.dir=", libParameter,
-//    	} else {
-//    		processBuilder = new ProcessBuilder(java, "-Xfuture", "-Xmx1024m", "-Dfile.encoding=UTF-8", "-XX:MaxPermSize=128m", "-jar", "support.jar", "-EpidemicGameMaker", epidemicGameFlag); // "-Djava.ext.dir=", libParameter,
-//    	}
-//    	processBuilder.directory(new File(bc2NetLogoFolder));
-//    	try { 
-//    		processBuilder.start();
-//    	} catch (Exception e) {
-//    		Utilities.reportException(e);
-//    	}
     	System.exit(0);
     }
 
