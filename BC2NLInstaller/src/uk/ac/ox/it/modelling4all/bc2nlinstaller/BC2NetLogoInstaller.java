@@ -66,8 +66,7 @@ public class BC2NetLogoInstaller {
     		}
     	}
     	boolean previouslyInstalled = true;
-    	// using 800 for NetLogo 6.0 while NetLogo Web uses 791 which is still 5.3.1
-    	String defaultServer = "https://800-dot-m4a-gae-hrd.appspot.com"; // "https://m4a-gae.appspot.com";
+    	String defaultServer = "https://m4a-gae.appspot.com";
     	String server = Settings.getPreference("server", defaultServer);
     	if (!previouslyInstalled) {
     		try {
